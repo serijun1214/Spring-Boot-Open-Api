@@ -3,6 +3,7 @@ package com.example.SpringBootOpenApi.controller.task;
 import com.example.SpringBootOpenApi.service.task.TaskService;
 import com.example.todoapi.controller.TasksApi;
 import com.example.todoapi.model.TaskDTO;
+import com.example.todoapi.model.TaskForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +27,10 @@ public class TaskController implements TasksApi {
     }
 
     @Override
-    public ResponseEntity<TaskDTO> createTask() {
+    public ResponseEntity<TaskDTO> createTask(TaskForm form) {
         var dto = new TaskDTO();
         dto.setId(99L);
-        dto.setTitle("created!");
+        dto.setTitle(form.getTitle());
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(dto);
