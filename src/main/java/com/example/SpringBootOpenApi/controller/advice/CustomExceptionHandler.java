@@ -31,6 +31,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
             HttpStatusCode status,
             WebRequest request
     ) {
-        return ResponseEntity.badRequest().body(new BadRequestError());
+        var error = BadRequestErrorCreater.from(ex);
+        return ResponseEntity.badRequest().body(error);
     }
 }
