@@ -35,7 +35,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TaskDTO'
+                $ref: "#/components/schemas/TaskDTO"
+        '404':
+          description: "Not Found"
 components:
   schemas:
     TaskDTO:
