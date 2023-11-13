@@ -64,6 +64,11 @@ public class TaskController implements TasksApi {
         return ResponseEntity.ok(dto);
     }
 
+    @Override
+    public ResponseEntity<Void> deleteTask(Long taskId) {
+        return ResponseEntity.noContent().build();
+    }
+
     private static TaskDTO toTaskDTO(TaskEntity taskEntity) {
         var taskDto = new TaskDTO();
         taskDto.setId(taskEntity.getId());
