@@ -3,6 +3,7 @@ package com.example.SpringBootOpenApi.controller.task;
 import com.example.SpringBootOpenApi.service.task.TaskEntity;
 import com.example.SpringBootOpenApi.service.task.TaskService;
 import com.example.todoapi.controller.TasksApi;
+import com.example.todoapi.model.PageDTO;
 import com.example.todoapi.model.TaskDTO;
 import com.example.todoapi.model.TaskForm;
 import com.example.todoapi.model.TaskListDTO;
@@ -44,7 +45,13 @@ public class TaskController implements TasksApi {
                 .map(TaskController::toTaskDTO)
                 .collect(Collectors.toList());
 
+        var pageDTO = new PageDTO();
+        pageDTO.setLimit(limit);
+        pageDTO.setOffset(offset);
+        pageDTO.setSize(dtoList.size());
+
         var dto = new TaskListDTO();
+        dto.setPage(pageDTO);
         dto.setResults(dtoList);
 
         return ResponseEntity.ok(dto);
